@@ -1,17 +1,52 @@
+
 import tomJerryNibbles.*
 
-describe "Grupo de test" {
+describe "Test de Tom y Jerry" {
 
-  test "test 1" {
-    assert.equals(100, 50+50)
+  test "La velocidad maxima de Tom es 10 y su energia es 50"{
+    tom.energia(50) // 1
+    assert.equals(50, tom.energia())
+    assert.equals(10, tom.velocidadMaxima())
+   
+    tom.comerRaton(jerry) // 2
+    assert.equals(15.2, tom.velocidadMaxima())
+    assert.equals(102, tom.energia())
+
+    tom.correr(24) // 3
+    assert.equals(14, tom.velocidadMaxima())
+    assert.equals(90, tom.energia())
+ 
+    tom.comerRaton(nibbles) // 4
+
+    assert.equals(18.7, tom.velocidadMaxima())
+    assert.equals(137, tom.energia())
+  
+    jerry.cumplirAños()
+    tom.comerRaton(jerry) // 5
+
+    assert.equals(25.9, tom.velocidadMaxima())
+    assert.equals(209, tom.energia())
+  
+    tom.correr(38) // 6
+
+    assert.equals(24, tom.velocidadMaxima())
   }
 
-  test "test 3" {
-    assert.that(true)
+  test "Tom come a Mickey, su energia es 122 y su velocidad maxima es 17.2" {
+    tom.comerRaton(mickey)
+
+    assert.equals(122, tom.energia())
+    assert.equals(17.2, tom.velocidadMaxima())
   }
 
-  test "test 4" {
-    assert.notThat(false)
+  test "Tom caza a Jerry si tiene la energia suficiente" {
+    tom.cazar(jerry, 10)
+
+    assert.equals(102, tom.energia())
   }
 
+  test "Tom puede cazar si la distancia es pequeña" {
+  assert.that(tom.puedeCazar(20))
+  }
 }
+
